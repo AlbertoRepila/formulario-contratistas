@@ -7,7 +7,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-devkey')  #es 
 
 DEBUG = os.environ.get('DEBUG', 'False') == 'True' #true muestra errores, falso no. a la hora de publicarlo cambiarlo a falso
 
-ALLOWED_HOSTS = ['formulario-contratistas-1.onrender.com'] #que dominios pueden acceder a la web, en producción puede estar vacio, pero despues hay que rellenarlo  ['midominio.com', '127.0.0.1']
+ALLOWED_HOSTS = ['.onrender.com', 'localhost', '127.0.0.1'] #que dominios pueden acceder a la web, en producción puede estar vacio, pero despues hay que rellenarlo  ['midominio.com', '127.0.0.1']
 
 INSTALLED_APPS = [
     'formularios',  # Tu app personalizada
