@@ -1,0 +1,35 @@
+{% load static %} <!--se pone con esto raro y dentro de static por convencion de Django, por buena praxis -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="{% static 'CSS_comun.css' %}">
+
+</head>
+<body>
+<h2>Mis formularios</h2>
+<br>
+<a href="{% url 'exportar_excel' %}" class="link_export">📄 Exportar mis formularios a Excel</a><br><br>
+<br>
+<a href="{% url 'nuevo_formulario' %}">Crear nuevo</a>
+
+<ul>
+  {% for f in formularios %}
+    <li>
+      <a href="{% url 'editar_formulario' f.id %}">Formulario {{ f.id }}</a> -
+      {% if f.completo %}Completo{% else %}Incompleto{% endif %} -
+      Grupo: {{ f.grupo.name }}
+    </li>
+  {% endfor %}
+</ul>
+<a href="{% url 'logout' %}">Cerrar sesión</a>
+</body>
+</html>
+
+
+
+
+

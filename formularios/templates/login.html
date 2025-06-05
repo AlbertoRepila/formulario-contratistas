@@ -1,0 +1,6 @@
+<h2>Iniciar sesión</h2>
+<form method="post">  <!--post es la forma de envio, poner siempre asi, nunca con get. Con get e veria la contraseña en la url -->
+    {% csrf_token %} <!--obligatorio por seguridad-->
+    {{ form.as_p }} <!-- crea de forma automatica usuario y contraseña en formato <p>-->
+    <button type="submit">Entrar</button> <!--boton para enviar el formulario-->
+</form>
