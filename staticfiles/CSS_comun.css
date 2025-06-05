@@ -1,0 +1,15 @@
+.link_export{
+    background-color: #4CAF50; /* Verde */
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.link_export:hover{
+    background-color: #45a049;
+    transition-duration: 1s;
+}

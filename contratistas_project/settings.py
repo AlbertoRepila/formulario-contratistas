@@ -1,12 +1,13 @@
 from pathlib import Path
+import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent #el path coge la ruta del archivo actual (settings), .resolve obtiene la ruta absoluta .parent.parent sube 2 niveles hasta la raiz del proyecto. sirve para construir rutas relativas como la base de datos, estaticos, plantillas.etc...
 
-SECRET_KEY = 'django-insecure-devkey'  #es la clave secreta, para cookies, tokens CSRF, firmar sesiones. nunca publicar
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-devkey')  #es la clave secreta, para cookies, tokens CSRF, firmar sesiones. nunca publicar
 
-DEBUG = True  #true muestra errores, falso no. a la hora de publicarlo cambiarlo a falso
+DEBUG = os.environ.get('DEBUG', 'False') == 'True' #true muestra errores, falso no. a la hora de publicarlo cambiarlo a falso
 
-ALLOWED_HOSTS = []  #que dominios pueden acceder a la web, en producción puede estar vacio, pero despues hay que rellenarlo  ['midominio.com', '127.0.0.1']
+ALLOWED_HOSTS = ['formulario-contratistas-1.onrender.com'] #que dominios pueden acceder a la web, en producción puede estar vacio, pero despues hay que rellenarlo  ['midominio.com', '127.0.0.1']
 
 INSTALLED_APPS = [
     'formularios',  # Tu app personalizada
@@ -27,6 +28,7 @@ MIDDLEWARE = [  #son capas intermedias que procesan peticiones y respuestas. Seg
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'contratistas_project.urls' #el archivo principal de rutas es urls
@@ -67,6 +69,8 @@ USE_I18N = True     # Activar sistema de traducción
 USE_TZ = True       # Guardar en UTC, mostrar en tu zona
 
 STATIC_URL = 'static/'  #define la url donde buscara elementos estaticos, como imagenes
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'  #usar este campo como clave primaria (id) por defecto en nuevos modelos
 
