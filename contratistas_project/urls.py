@@ -1,10 +1,11 @@
 from django.contrib import admin  #importa el panel de administración django
 from django.urls import path, include #path para rutas especificas, include para usar rutas definidas en otro archivos, como los de mi app
 from django.contrib.auth import views as auth_views #importa las vistas de login y logout que trae django por defecto
-from django.http import HttpResponse
+from django.shortcuts import redirect
+
 
 def home(request):
-    return HttpResponse("Bienvenido al formulario de contratistas. Ve a /formularios/")
+    return redirect('login')
 
 
 urlpatterns = [  #lista de urls que django utiliza para saber a donde mandarte cada vez, añadir aqui todas las nuevas
