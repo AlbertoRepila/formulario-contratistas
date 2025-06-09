@@ -49,7 +49,7 @@ def editar_formulario(request, id=None):
 
     return render(request, 'formularios/formulario.html', {'form': form})
 
-@staff_member_required  # Asegura que solo los administradores pueden acceder a esta vista
+#@staff_member_required  # Asegura que solo los administradores pueden acceder a esta vista
 def create_superuser(request):
     # Verificar si el superusuario ya existe
     if not User.objects.filter(username='admin').exists():
