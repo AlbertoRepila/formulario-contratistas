@@ -2,6 +2,7 @@ import os
 from django.core.wsgi import get_wsgi_application
 import django
 import dj_database_url
+from django.core.management import call_command
 
 
 # Configura el entorno Django
@@ -9,6 +10,9 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'contratistas_project.settings')
 
 # Inicia Django
 django.setup()
+
+# Aplica las migraciones de la base de datos
+call_command('migrate')
 
 # Importa el modelo de usuario
 from django.contrib.auth.models import User
