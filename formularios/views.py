@@ -6,6 +6,7 @@ import re  # ← para usar expresiones regulares como re.match()
 from django.contrib.auth.models import Group  # ← para crear o consultar grupos
 from openpyxl import Workbook
 from django.http import HttpResponse
+from django.core.management import call_command
 
 
 @login_required #obliga q ue se tenga q hacer login
@@ -75,5 +76,13 @@ def exportar_mis_formularios_excel(request):
     response['Content-Disposition'] = 'attachment; filename="mis_formularios.xlsx"'
     wb.save(response)
     return response
+
+@login_required
+def run_migrate(request):
+    try:
+        call_command('migrate')  # Ejecuta las migraciones
+        return HttpResponse("Migraciones ejecutadas correctamente.")
+    except Exception as e:
+        return HttpResponse(f"Error al ejecutar migraciones: {str(e)}")
 
 

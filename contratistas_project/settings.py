@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent #el path coge la ruta del archivo actual (settings), .resolve obtiene la ruta absoluta .parent.parent sube 2 niveles hasta la raiz del proyecto. sirve para construir rutas relativas como la base de datos, estaticos, plantillas.etc...
 
@@ -51,11 +52,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'contratistas_project.wsgi.application'  #indica el punto de entrada del servidor web, solo relevante en producción
 
-DATABASES = {  #base de datos
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+#DATABASES = {  #base de datos
+ #   'default': {
+  #      'ENGINE': 'django.db.backends.sqlite3',
+   #     'NAME': BASE_DIR / 'db.sqlite3',
+    #}
+#}
+
+DATABASES = {
+    'default': dj_database_url.config(
+        default=f"postgres://{os.environ['DATABASE_USER']}:{os.environ['DATABASE_PASSWORD']}@{os.environ['DATABASE_HOST']}:{os.environ['DATABASE_PORT']}/{os.environ['DATABASE_NAME']}"
+    )
 }
 
 AUTH_PASSWORD_VALIDATORS = []  #validadores de contraseña, que no sea muy corta, ni muy comun, ni solo numerica...
