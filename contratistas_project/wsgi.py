@@ -1,6 +1,8 @@
 import os
 from django.core.wsgi import get_wsgi_application
 import django
+import dj_database_url
+
 
 # Configura el entorno Django
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'contratistas_project.settings')
@@ -13,8 +15,8 @@ from django.contrib.auth.models import User
 
 # Función para crear el superusuario si no existe
 def create_superuser():
-    username = 'admin'  # Cambia esto por el nombre de usuario que deseas
-    password = 'password123'  # Cambia esto por una contraseña segura
+    username = 'db_residuos_formulario_user'  # Cambia esto por el nombre de usuario que deseas
+    password = '5KqesRcOSi7deT7IYRzJKeMq1z6aL7C4'  # Cambia esto por una contraseña segura
     email = 'admin@example.com'  # Cambia esto por el correo electrónico del superusuario
 
     # Verifica si el superusuario ya existe
