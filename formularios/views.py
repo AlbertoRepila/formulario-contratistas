@@ -49,6 +49,20 @@ def editar_formulario(request, id=None):
 
     return render(request, 'formularios/formulario.html', {'form': form})
 
+@staff_member_required  # Asegura que solo los administradores pueden acceder a esta vista
+def create_superuser(request):
+    # Verificar si el superusuario ya existe
+    if not User.objects.filter(username='admin').exists():
+        # Crear el superusuario en la base de datos PostgreSQL
+        User.objects.create_superuser(
+            username='admin',  # Nombre de usuario
+            email='admin@admin.com',  # Correo del superusuario
+            password='adminpassword123'  # Contraseña del superusuario
+        )
+        return HttpResponse("Superusuario creado con éxito.")
+    else:
+        return HttpResponse("El superusuario ya existe.")
+
 @login_required
 def exportar_mis_formularios_excel(request):
     grupo_usuario = request.user.groups.first()
