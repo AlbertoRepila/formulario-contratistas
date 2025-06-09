@@ -1,8 +1,0 @@
-ID;Usuario;Grupo;Nombre del proyecto;DescripciÃ³n;NÂº de trabajadores;Peso residuo (kg);Fecha inicio;Fecha revisiÃ³n;Â¿Peligroso?;Tipo de residuo;Â¿Completo?;Fecha creaciÃ³n;Ãšltima modificaciÃ³n
-1;AlbertoRepila;albertorepila;prueba;prueba larga;16;0.13;2025-06-03;2025-06-04 09:33:57.792109+00:00;False;Orgánico;False;2025-06-04 09:33:57.792205+00:00;2025-06-04 09:33:57.792216+00:00
-2;AlbertoRepila;albertorepila;prueba2;fdcds;15;0.15;2025-06-03;2025-06-04 09:34:28.331507+00:00;True;Orgánico;True;2025-06-04 09:34:28.331543+00:00;2025-06-04 09:34:28.331550+00:00
-3;cobra123;cobra;pruebacobra123;cdc;10;0.10;2025-06-03;2025-06-04 09:45:39.364991+00:00;True;Orgánico;True;2025-06-04 09:45:39.365037+00:00;2025-06-04 09:45:39.365044+00:00
-4;cobra123;cobra;cobra123prueba;xsa;10;0.08;2025-06-03;2025-06-04 09:46:04.470546+00:00;True;Orgánico;False;2025-06-04 09:46:04.470584+00:00;2025-06-04 09:46:04.470590+00:00
-5;cobra456;cobra;prueba456cobra;c;2;-0.09;2025-06-03;2025-06-04 09:48:04.376364+00:00;True;Orgánico;True;2025-06-04 09:48:04.376426+00:00;2025-06-04 09:48:04.376436+00:00
-6;enitec123;enitec;enitec;ddcdsc;9;0.09;2025-06-03;2025-06-04 09:52:13.145758+00:00;True;Orgánico;True;2025-06-04 09:52:13.145800+00:00;2025-06-04 09:52:13.145807+00:00
-7;enitec456;enitec;prueba;nkmlk;10;0.09;2025-06-03;2025-06-04 09:52:42.006445+00:00;True;Orgánico;False;2025-06-04 09:52:42.006501+00:00;2025-06-04 09:52:42.006509+00:00
