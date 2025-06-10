@@ -13,7 +13,22 @@ from django.core.management import call_command
 def mis_formularios(request):
     grupo_usuario = request.user.groups.first()  # Obtiene el primer grupo al que pertenece el usuario (cobra, enitec...)
     formularios = Formulario.objects.filter(grupo=grupo_usuario) #busca los usuarios creados por el y por su grupo
-    return render(request, 'formularios/mis_formularios.html', {'formularios': formularios}) #muestra el html con la lista de formularios
+    estado = request.GET.get('estado')  # completo / incompleto
+    busqueda = request.GET.get('busqueda')  # número de inspección / nombre_proyecto
+
+    if estado == 'completo':
+        formularios = formularios.filter(completo=True)
+    elif estado == 'incompleto':
+        formularios = formularios.filter(completo=False)
+
+    if busqueda:
+        formularios = formularios.filter(nombre_proyecto__icontains=busqueda)
+
+    return render(request, 'formularios/mis_formularios.html', {
+        'formularios': formularios,
+        'estado': estado,
+        'busqueda': busqueda,
+    })
 
 
 @login_required
