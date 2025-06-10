@@ -1,71 +1,33 @@
-{% load static %}
+{% load static %} <!--se pone con esto raro y dentro de static por convencion de Django, por buena praxis -->
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mis Formularios</title>
-  
-  <!-- Bootstrap para estilos -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  
-  <!-- Tu CSS personalizado -->
+  <title>Document</title>
   <link rel="stylesheet" href="{% static 'CSS_comun.css' %}">
+
 </head>
 <body>
-<div class="container mt-4">
-  <h2 class="mb-4">📋 Mis formularios</h2>
+<h2>Mis formularios</h2>
+<br>
+<a href="{% url 'exportar_excel' %}" class="link_export">📄 Exportar mis formularios a Excel</a><br><br>
+<br>
+<a href="{% url 'nuevo_formulario' %}">Crear nuevo</a>
 
-  <div class="mb-3">
-    <a href="{% url 'exportar_excel' %}" class="btn btn-outline-secondary me-2">📄 Exportar a Excel</a>
-    <a href="{% url 'nuevo_formulario' %}" class="btn btn-success">➕ Crear nuevo formulario</a>
-  </div>
-
-  <!-- FILTRO -->
-  <form method="get" class="row g-3 mb-4 border p-3 rounded bg-light">
-    <div class="col-md-4">
-      <label for="estado" class="form-label">Estado:</label>
-      <select name="estado" id="estado" class="form-select">
-        <option value="">Todos</option>
-        <option value="completo" {% if estado == 'completo' %}selected{% endif %}>✅ Completos</option>
-        <option value="incompleto" {% if estado == 'incompleto' %}selected{% endif %}>❌ Incompletos</option>
-      </select>
-    </div>
-    <div class="col-md-4">
-      <label for="busqueda" class="form-label">Buscar por nombre de proyecto:</label>
-      <input type="text" name="busqueda" id="busqueda" class="form-control" value="{{ busqueda }}">
-    </div>
-    <div class="col-md-4 d-flex align-items-end">
-      <button type="submit" class="btn btn-primary w-100">🔍 Filtrar</button>
-    </div>
-  </form>
-
-  <!-- LISTADO -->
-  <ul class="list-group">
-    {% for f in formularios %}
-      <li class="list-group-item d-flex justify-content-between align-items-center">
-        <div>
-          <strong>{{ f.nombre_proyecto }}</strong> — {{ f.fecha_creacion|date:"Y-m-d" }}<br>
-          Estado: {% if f.completo %}<span class="text-success">✅ Completo</span>{% else %}<span class="text-danger">❌ Incompleto</span>{% endif %}<br>
-          Grupo: {{ f.grupo.name }}
-        </div>
-        <a href="{% url 'editar_formulario' f.id %}" class="btn btn-outline-primary btn-sm">Ver / Editar</a>
-      </li>
-    {% empty %}
-      <li class="list-group-item">No se encontraron formularios con esos filtros.</li>
-    {% endfor %}
-  </ul>
-
-  <div class="mt-4">
-    <a href="{% url 'logout' %}" class="btn btn-link">Cerrar sesión</a>
-  </div>
-</div>
-
+<ul>
+  {% for f in formularios %}
+    <li>
+      <a href="{% url 'editar_formulario' f.id %}">Formulario {{ f.id }}</a> -
+      {% if f.completo %}Completo{% else %}Incompleto{% endif %} -
+      Grupo: {{ f.grupo.name }}
+    </li>
+  {% endfor %}
+</ul>
+<a href="{% url 'logout' %}">Cerrar sesión</a>
 </body>
 </html>
-
-
 
 
 
