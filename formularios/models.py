@@ -28,6 +28,17 @@ class Formulario(models.Model):
     # 7. Sí / No
     es_peligroso = models.BooleanField("¿Es un residuo peligroso?", default=False)
 
+    #código ler
+    codigo_ler = models.CharField(
+        "Código LER",
+        max_length=6,
+        choices=[
+            '111111',
+            '222222'
+            '333333'
+        ]
+    )
+
     # 8. Opciones (choice)
     tipo_residuo = models.CharField(
         "Tipo de residuo",

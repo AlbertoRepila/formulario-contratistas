@@ -14,7 +14,6 @@ urlpatterns = [  #lista de urls que django utiliza para saber a donde mandarte c
     path('formularios/', include('formularios.urls')),  #lista de formularios, crear nuevo formulario, editar formulario 
     path('accounts/login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),  #pantalla de inicio de sesión. se activa automaticamente si no estas logueado
     path('accounts/logout/', auth_views.LogoutView.as_view(), name='logout'), #se te cierra la sesión y te lleva en funcion de lo que este en setings en logout_redirect
-    path('run-migrate/', views.run_migrate, name='run_migrate'), #ruta a la base de datos
     path('', home),
 
 
