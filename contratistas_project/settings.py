@@ -52,18 +52,18 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'contratistas_project.wsgi.application'  #indica el punto de entrada del servidor web, solo relevante en producción
 
-#DATABASES = {  #base de datos
- #   'default': {
-  #      'ENGINE': 'django.db.backends.sqlite3',
-   #     'NAME': BASE_DIR / 'db.sqlite3',
-    #}
-#}
-
-DATABASES = {
-    'default': dj_database_url.config(
-        default=f"postgres://{os.environ['DATABASE_USER']}:{os.environ['DATABASE_PASSWORD']}@{os.environ['DATABASE_HOST']}:{os.environ['DATABASE_PORT']}/{os.environ['DATABASE_NAME']}"
-    )
+DATABASES = {  #base de datos
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
+
+#DATABASES = {
+ #   'default': dj_database_url.config(
+  #      default=f"postgres://{os.environ['DATABASE_USER']}:{os.environ['DATABASE_PASSWORD']}@{os.environ['DATABASE_HOST']}:{os.environ['DATABASE_PORT']}/{os.environ['DATABASE_NAME']}"
+   # )
+#}
 
 AUTH_PASSWORD_VALIDATORS = []  #validadores de contraseña, que no sea muy corta, ni muy comun, ni solo numerica...
 
